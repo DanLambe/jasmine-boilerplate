@@ -3,6 +3,16 @@ Jasmine Boilerplate ![CI](https://github.com/webdriverio/jasmine-boilerplate/wor
 
 Boilerplate project to run WebdriverIO tests with Jasmine using latest ES2016 features and the page objects pattern.
 
+## WebdriverIO v10 BiDi stale element repro
+
+This branch is `webdriverio/jasmine-boilerplate` `main` with every WebdriverIO package on 10.1.0, plus [`test/specs/bidi-stale.spec.ts`](test/specs/bidi-stale.spec.ts). Under the default BiDi session, an element command sent while a script-driven navigation is in flight fails with `Node with given id does not belong to the document`. WebdriverIO doesn't treat that as a stale element, so it never re-finds the element. See [BUG_REPORT.md](BUG_REPORT.md).
+
+```sh
+npm install
+npm run repro:bidi      # fails: default v10 BiDi session
+npm run repro:classic   # passes: same spec with 'wdio:enforceWebDriverClassic': true
+```
+
 ## Quick Start
 
 Choose one of the following options:
